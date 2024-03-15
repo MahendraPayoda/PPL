@@ -6,6 +6,7 @@ import 'package:payoda/model/team_list_response.dart';
 import 'package:payoda/router/routes.dart';
 import 'package:payoda/views/create_new_password_screen.dart';
 import 'package:payoda/views/dashboard_screen.dart';
+import 'package:payoda/views/engagement/create_engagement.dart';
 import 'package:payoda/views/forgot_password_screen.dart';
 import 'package:payoda/views/login_screen.dart';
 import 'package:payoda/views/splash_screen.dart';
@@ -64,6 +65,8 @@ class AppRouter {
         final List<Team>? team = arguments['team'] as List<Team>?;
         final int index = arguments['index'] as int;
         return getPageRoute(view: AddEditMemberScreen(team: team, index: index), settings: settings);
+      case AppRoutes.createEngagementRoute:
+        return getPageRoute(view: const CreateEngagementScreen(), settings: settings);
       default:
         return getPageRoute(
             view: Scaffold(body: Center(child: Text('No route defined for ${settings.name}'))),

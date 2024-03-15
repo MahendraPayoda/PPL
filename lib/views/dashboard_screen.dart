@@ -47,6 +47,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
           ][value.selectedIndex],
           bottomNavigationBar: NavigationBarTheme(
             data: NavigationBarThemeData(
+              backgroundColor: AppColors.pureWhite,
                 labelTextStyle: MaterialStateProperty.resolveWith<TextStyle>((Set<MaterialState> states) =>
                     states.contains(MaterialState.selected)
                         ? textTheme().titleMedium!.copyWith(

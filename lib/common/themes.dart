@@ -1,73 +1,71 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:payoda/common/app_colors.dart';
 import 'package:payoda/router/app_router.dart';
 
 class Themes {
-
-  static final TextTheme _lightTextTheme = TextTheme(
-    displayLarge:
-        GoogleFonts.manrope(color: AppColors.lightTextColor, fontSize: 57, fontWeight: FontWeight.normal),
-    displayMedium:
-        GoogleFonts.manrope(color: AppColors.lightTextColor, fontSize: 45, fontWeight: FontWeight.normal),
-    displaySmall:
-        GoogleFonts.manrope(color: AppColors.lightTextColor, fontSize: 36, fontWeight: FontWeight.normal),
-    headlineLarge:
-        GoogleFonts.manrope(color: AppColors.lightTextColor, fontSize: 32, fontWeight: FontWeight.normal),
-    headlineMedium:
-        GoogleFonts.manrope(color: AppColors.lightTextColor, fontSize: 28, fontWeight: FontWeight.normal),
-    headlineSmall:
-        GoogleFonts.manrope(color: AppColors.lightTextColor, fontSize: 24, fontWeight: FontWeight.normal),
-    titleLarge:
-        GoogleFonts.manrope(color: AppColors.lightTextColor, fontSize: 22, fontWeight: FontWeight.bold),
-    titleMedium:
-        GoogleFonts.manrope(color: AppColors.lightTextColor, fontSize: 16, fontWeight: FontWeight.bold),
-    titleSmall:
-        GoogleFonts.manrope(color: AppColors.lightTitleColor, fontSize: 14, fontWeight: FontWeight.bold),
-    labelLarge:
-        GoogleFonts.manrope(color: AppColors.lightTextColor, fontSize: 14, fontWeight: FontWeight.normal),
-    labelMedium:
-        GoogleFonts.manrope(color: AppColors.lightTextColor, fontSize: 12, fontWeight: FontWeight.bold),
-    labelSmall:
-        GoogleFonts.manrope(color: AppColors.lightTextColor, fontSize: 11, fontWeight: FontWeight.normal),
-    bodyLarge:
-        GoogleFonts.manrope(color: AppColors.lightTextColor, fontSize: 16, fontWeight: FontWeight.normal),
-    bodyMedium:
-        GoogleFonts.manrope(color: AppColors.lightTextColor, fontSize: 14, fontWeight: FontWeight.normal),
-    bodySmall:
-        GoogleFonts.manrope(color: AppColors.lightTextColor, fontSize: 12, fontWeight: FontWeight.normal),
+  static const TextTheme _lightTextTheme = TextTheme(
+    displayLarge: TextStyle(
+        color: AppColors.lightTextColor, fontSize: 57, fontWeight: FontWeight.normal, fontFamily: 'Manrope'),
+    displayMedium: TextStyle(
+        color: AppColors.lightTextColor, fontSize: 45, fontWeight: FontWeight.normal, fontFamily: 'Manrope'),
+    displaySmall: TextStyle(
+        color: AppColors.lightTextColor, fontSize: 36, fontWeight: FontWeight.normal, fontFamily: 'Manrope'),
+    headlineLarge: TextStyle(
+        color: AppColors.lightTextColor, fontSize: 32, fontWeight: FontWeight.normal, fontFamily: 'Manrope'),
+    headlineMedium: TextStyle(
+        color: AppColors.lightTextColor, fontSize: 28, fontWeight: FontWeight.normal, fontFamily: 'Manrope'),
+    headlineSmall: TextStyle(
+        color: AppColors.lightTextColor, fontSize: 24, fontWeight: FontWeight.normal, fontFamily: 'Manrope'),
+    titleLarge: TextStyle(
+        color: AppColors.lightTextColor, fontSize: 22, fontWeight: FontWeight.bold, fontFamily: 'Manrope'),
+    titleMedium: TextStyle(
+        color: AppColors.lightTextColor, fontSize: 16, fontWeight: FontWeight.bold, fontFamily: 'Manrope'),
+    titleSmall: TextStyle(
+        color: AppColors.lightTitleColor, fontSize: 14, fontWeight: FontWeight.bold, fontFamily: 'Manrope'),
+    labelLarge: TextStyle(
+        color: AppColors.lightTextColor, fontSize: 14, fontWeight: FontWeight.normal, fontFamily: 'Manrope'),
+    labelMedium: TextStyle(
+        color: AppColors.lightTextColor, fontSize: 12, fontWeight: FontWeight.bold, fontFamily: 'Manrope'),
+    labelSmall: TextStyle(
+        color: AppColors.lightTextColor, fontSize: 11, fontWeight: FontWeight.normal, fontFamily: 'Manrope'),
+    bodyLarge: TextStyle(
+        color: AppColors.lightTextColor, fontSize: 16, fontWeight: FontWeight.normal, fontFamily: 'Manrope'),
+    bodyMedium: TextStyle(
+        color: AppColors.lightTextColor, fontSize: 14, fontWeight: FontWeight.normal, fontFamily: 'Manrope'),
+    bodySmall: TextStyle(
+        color: AppColors.lightTextColor, fontSize: 12, fontWeight: FontWeight.normal, fontFamily: 'Manrope'),
   );
   static final TextTheme _darkTextTheme = TextTheme(
-    displayLarge:
-        GoogleFonts.manrope(color: AppColors.darkTextColor, fontSize: 57, fontWeight: FontWeight.normal),
-    displayMedium:
-        GoogleFonts.manrope(color: AppColors.darkTextColor, fontSize: 45, fontWeight: FontWeight.normal),
-    displaySmall:
-        GoogleFonts.manrope(color: AppColors.darkTextColor, fontSize: 36, fontWeight: FontWeight.normal),
-    headlineLarge:
-        GoogleFonts.manrope(color: AppColors.darkTextColor, fontSize: 32, fontWeight: FontWeight.normal),
-    headlineMedium:
-        GoogleFonts.manrope(color: AppColors.darkTextColor, fontSize: 28, fontWeight: FontWeight.normal),
-    headlineSmall:
-        GoogleFonts.manrope(color: AppColors.darkTextColor, fontSize: 24, fontWeight: FontWeight.normal),
-    titleLarge:
-        GoogleFonts.manrope(color: AppColors.darkTextColor, fontSize: 22, fontWeight: FontWeight.bold),
-    titleMedium:
-        GoogleFonts.manrope(color: AppColors.darkTextColor, fontSize: 16, fontWeight: FontWeight.bold),
-    titleSmall:
-        GoogleFonts.manrope(color: AppColors.darkTitleColor, fontSize: 14, fontWeight: FontWeight.bold),
-    labelLarge:
-        GoogleFonts.manrope(color: AppColors.darkTextColor, fontSize: 14, fontWeight: FontWeight.bold),
-    labelMedium:
-        GoogleFonts.manrope(color: AppColors.darkTextColor, fontSize: 12, fontWeight: FontWeight.bold),
-    labelSmall:
-        GoogleFonts.manrope(color: AppColors.darkTextColor, fontSize: 11, fontWeight: FontWeight.normal),
-    bodyLarge:
-        GoogleFonts.manrope(color: AppColors.darkTextColor, fontSize: 16, fontWeight: FontWeight.normal),
-    bodyMedium:
-        GoogleFonts.manrope(color: AppColors.darkTextColor, fontSize: 14, fontWeight: FontWeight.normal),
-    bodySmall:
-        GoogleFonts.manrope(color: AppColors.darkTextColor, fontSize: 12, fontWeight: FontWeight.normal),
+    displayLarge: const TextStyle(
+        color: AppColors.darkTextColor, fontSize: 57, fontWeight: FontWeight.normal, fontFamily: 'Manrope'),
+    displayMedium: const TextStyle(
+        color: AppColors.darkTextColor, fontSize: 45, fontWeight: FontWeight.normal, fontFamily: 'Manrope'),
+    displaySmall: const TextStyle(
+        color: AppColors.darkTextColor, fontSize: 36, fontWeight: FontWeight.normal, fontFamily: 'Manrope'),
+    headlineLarge: const TextStyle(
+        color: AppColors.darkTextColor, fontSize: 32, fontWeight: FontWeight.normal, fontFamily: 'Manrope'),
+    headlineMedium: const TextStyle(
+        color: AppColors.darkTextColor, fontSize: 28, fontWeight: FontWeight.normal, fontFamily: 'Manrope'),
+    headlineSmall: const TextStyle(
+        color: AppColors.darkTextColor, fontSize: 24, fontWeight: FontWeight.normal, fontFamily: 'Manrope'),
+    titleLarge: const TextStyle(
+        color: AppColors.darkTextColor, fontSize: 22, fontWeight: FontWeight.bold, fontFamily: 'Manrope'),
+    titleMedium: const TextStyle(
+        color: AppColors.darkTextColor, fontSize: 16, fontWeight: FontWeight.bold, fontFamily: 'Manrope'),
+    titleSmall: const TextStyle(
+        color: AppColors.darkTitleColor, fontSize: 14, fontWeight: FontWeight.bold, fontFamily: 'Manrope'),
+    labelLarge: const TextStyle(
+        color: AppColors.darkTextColor, fontSize: 14, fontWeight: FontWeight.bold, fontFamily: 'Manrope'),
+    labelMedium: const TextStyle(
+        color: AppColors.darkTextColor, fontSize: 12, fontWeight: FontWeight.bold, fontFamily: 'Manrope'),
+    labelSmall: const TextStyle(
+        color: AppColors.darkTextColor, fontSize: 11, fontWeight: FontWeight.normal, fontFamily: 'Manrope'),
+    bodyLarge: const TextStyle(
+        color: AppColors.darkTextColor, fontSize: 16, fontWeight: FontWeight.normal, fontFamily: 'Manrope'),
+    bodyMedium: const TextStyle(
+        color: AppColors.darkTextColor, fontSize: 14, fontWeight: FontWeight.normal, fontFamily: 'Manrope'),
+    bodySmall: const TextStyle(
+        color: AppColors.darkTextColor, fontSize: 12, fontWeight: FontWeight.normal, fontFamily: 'Manrope'),
   );
 
   static ThemeData darkTheme = ThemeData(
@@ -200,7 +198,7 @@ class Themes {
         circularTrackColor: AppColors.lightFillBackground,
         linearTrackColor: AppColors.lightFillBackground,
       ),
-    backgroundColor: AppColors.lightFillBackground);
+      backgroundColor: AppColors.lightFillBackground);
 }
 
 bool isDarkMode() {

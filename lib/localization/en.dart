@@ -29,6 +29,7 @@ Map<String, String> en() {
     'engagements': ' Engagements',
     'connects': ' Connects',
     'createTeam': ' Create Team',
+    'createEngagement': ' Create Engagement',
     'uploadTeams': 'Upload teams',
     'or': 'OR',
     'uploadLogo': 'Upload\nLogo',

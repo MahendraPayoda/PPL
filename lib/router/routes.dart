@@ -10,4 +10,5 @@ class AppRoutes {
   static const String teamDetailRoute = '/teamDetailRoute';
   static const String uploadTeamRoute = '/uploadTeamRoute';
   static const String addEditTeamRoute = '/addEditTeamRoute';
+  static const String createEngagementRoute = '/createEngagementRoute';
 }

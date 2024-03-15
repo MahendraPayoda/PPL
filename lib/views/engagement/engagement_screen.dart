@@ -30,7 +30,7 @@ class _EngagementScreenState extends State<EngagementScreen> {
           centerTitle: true,
           actions: [
             InkWell(
-              onTap: () => AppRouter.navigateTo(AppRoutes.createTeamRoute),
+              onTap: () => AppRouter.navigateTo(AppRoutes.createEngagementRoute),
               child: Row(
                 children: [
                   const Icon(Icons.add_circle_outline, color: AppColors.buttonColor),

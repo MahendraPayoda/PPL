@@ -1,13 +1,17 @@
 import 'dart:io';
 
+import 'package:dio/dio.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:payoda/model/common_response.dart';
 import 'package:payoda/model/create_team_response.dart';
 import 'package:payoda/model/get_employee_name_response.dart';
 import 'package:payoda/router/app_router.dart';
+import 'package:payoda/router/routes.dart';
 import 'package:payoda/service/api_service.dart';
 import 'package:payoda/service/api_urls.dart';
+import 'package:payoda/utills/snackbar_manager.dart';
 import 'package:pull_to_refresh_flutter3/pull_to_refresh_flutter3.dart';
 
 class CreateTeamProvider extends ChangeNotifier {
@@ -157,6 +161,7 @@ class CreateTeamProvider extends ChangeNotifier {
     var newData = await getEmployeeDataForSponsor();
     if (newData.isNotEmpty) {
       employeeNameListForSponsor.addAll(newData);
+      tempEmployeeNameListForSponsor.addAll(newData);
       pageForSponsor++;
       notifyListeners();
     }
@@ -210,7 +215,7 @@ class CreateTeamProvider extends ChangeNotifier {
     AppRouter.navigatePop();
   }
 
-  Future<void> createTeam() async {
+  Future<void> createTeam(BuildContext context) async {
     isLoading = true;
     notifyListeners();
     try {
@@ -224,14 +229,43 @@ class CreateTeamProvider extends ChangeNotifier {
 
       Map<String, String> filesMap = {'TeamLogo': pickedImage!.path, 'excelFile': pickedExcelFile!.path!};
       final response = await _apiService.postMultipartData(ApiUrls.createTeam, staticData, filesMap);
+      debugPrint('response: $response');
       isLoading = false;
       if (response.statusCode == 200) {
-        createTeamResponse = response.data;
+        final commonResponse = CommonResponse.fromJson(response.data);
+        if (context.mounted) {
+          if (commonResponse.success ?? false) {
+            SnackbarManager.showSuccessSnackbar(message: commonResponse.message ?? '', context: context);
+
+            AppRouter.navigatePushReplacementTo(AppRoutes.dashboardRoute);
+          } else {
+            SnackbarManager.showErrorSnackbar(message: commonResponse.message ?? '', context: context);
+          }
+        }
       }
     } catch (e) {
       isLoading = false;
       debugPrint('Error: $e');
+      if (e is DioException) {
+        if (context.mounted) {
+          SnackbarManager.showErrorSnackbar(message: e.response?.data['message'] ?? '', context: context);
+        }
+      }
     }
     notifyListeners();
   }
+
+  // String getSizeInKb(File file) {
+  //   int fileSizeInBytes = file.lengthSync();
+  //   double fileSizeInKb = fileSizeInBytes / 1024; // Convert bytes to kilobytes
+  //   return fileSizeInKb.toStringAsFixed(2); // Format to two decimal places
+  // }
+
+  String getSizeInKb(File file) {
+    int sizeInBytes = file.lengthSync();
+    double sizeInMb = sizeInBytes / (1024 * 1024);
+    double kb = sizeInMb * 1024;
+    return kb.toStringAsFixed(2);
+  }
+
 }

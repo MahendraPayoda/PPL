@@ -26,6 +26,7 @@ class _DialogForSponsorState extends State<DialogForSponsor> {
   @override
   void initState() {
     super.initState();
+    updateValue();
     searchController = TextEditingController();
   }
 

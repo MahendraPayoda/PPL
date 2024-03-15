@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:payoda/common/app_colors.dart';
@@ -82,7 +84,7 @@ class _CreateTeamScreenState extends State<CreateTeamScreen> {
                               Row(
                                 children: [
                                   InkWell(
-                                    onTap: value.pickedImage == null ? () => value.pickImage(context) : null,
+                                    onTap: () => value.pickImage(context),
                                     child: Container(
                                         padding: const EdgeInsets.symmetric(vertical: 25, horizontal: 20),
                                         decoration:
@@ -153,13 +155,13 @@ class _CreateTeamScreenState extends State<CreateTeamScreen> {
                                           Column(
                                             crossAxisAlignment: CrossAxisAlignment.start,
                                             children: [
-                                              Text('Team logo${value.getExtension()}',
+                                              Text(value.pickedImage!.path.split('/').last,
                                                   style: textTheme().bodyMedium?.copyWith(
                                                       color: AppColors.noTeamColor,
                                                       fontSize: 12,
                                                       fontWeight: FontWeight.w400)),
                                               Text(
-                                                  '${(value.pickedImage!.lengthSync() / (1024 * 1024)).toStringAsFixed(2)} Kb',
+                                                  '${(value.pickedImage!.lengthSync()).toStringAsFixed(2)} Kb',
                                                   style: textTheme().bodyMedium?.copyWith(
                                                       color: AppColors.drawerButtonColor,
                                                       fontSize: 10,
@@ -179,7 +181,7 @@ class _CreateTeamScreenState extends State<CreateTeamScreen> {
                               const SizedBox(height: 10),
                               CommonTextFormField(
                                   controller: value.teamNameController,
-                                  hintText: 'teamName'.tr(),
+                                  labelText: 'teamName'.tr(),
                                   hintColor: AppColors.gmailButtonColor,
                                   style: textTheme().bodyMedium?.copyWith(
                                       color: AppColors.gmailButtonColor,
@@ -189,7 +191,7 @@ class _CreateTeamScreenState extends State<CreateTeamScreen> {
                               const SizedBox(height: 8),
                               CommonTextFormField(
                                   controller: value.captainController,
-                                  hintText: 'captain'.tr(),
+                                  labelText: 'captain'.tr(),
                                   hintColor: AppColors.gmailButtonColor,
                                   styleColor: AppColors.gmailButtonColor,
                                   showSuffix: true,
@@ -205,7 +207,7 @@ class _CreateTeamScreenState extends State<CreateTeamScreen> {
                               const SizedBox(height: 8),
                               CommonTextFormField(
                                   controller: value.viceCaptainController,
-                                  hintText: 'viceCaptain'.tr(),
+                                  labelText: 'viceCaptain'.tr(),
                                   hintColor: AppColors.gmailButtonColor,
                                   styleColor: AppColors.gmailButtonColor,
                                   style: textTheme().bodyMedium?.copyWith(
@@ -221,7 +223,7 @@ class _CreateTeamScreenState extends State<CreateTeamScreen> {
                               const SizedBox(height: 8),
                               CommonTextFormField(
                                   controller: value.sponsorController,
-                                  hintText: 'sponsor'.tr(),
+                                  labelText: 'sponsor'.tr(),
                                   hintColor: AppColors.gmailButtonColor,
                                   styleColor: AppColors.gmailButtonColor,
                                   style: textTheme().bodyMedium?.copyWith(
@@ -237,17 +239,15 @@ class _CreateTeamScreenState extends State<CreateTeamScreen> {
                               const SizedBox(height: 20),
                               Row(children: [
                                 InkWell(
-                                    onTap: value.pickedExcelFile != null
-                                        ? null
-                                        : () => Navigator.push(
-                                                    context,
-                                                    MaterialPageRoute(
-                                                        builder: (context) => const UploadTeamScreen()))
-                                                .then((result) {
-                                              if (result != null) {
-                                                value.notify(result);
-                                              }
-                                            }),
+                                    onTap: () => Navigator.push(
+                                                context,
+                                                MaterialPageRoute(
+                                                    builder: (context) => const UploadTeamScreen()))
+                                            .then((result) {
+                                          if (result != null) {
+                                            value.notify(result);
+                                          }
+                                        }),
                                     child: Container(
                                         padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
                                         decoration: const DottedBorderDecoration(
@@ -290,12 +290,13 @@ class _CreateTeamScreenState extends State<CreateTeamScreen> {
                                                           fontSize: 10))),
                                               const SizedBox(width: 8),
                                               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                                                Text('Payoda Teams.xlsx',
+                                                Text(value.pickedExcelFile!.name,
                                                     style: textTheme().bodyMedium?.copyWith(
                                                         color: AppColors.noTeamColor,
                                                         fontSize: 12,
                                                         fontWeight: FontWeight.w400)),
-                                                Text(' Kb',
+                                                Text(
+                                                    '${value.getSizeInKb(File(value.pickedExcelFile!.path!))} Kb',
                                                     style: textTheme().bodyMedium?.copyWith(
                                                         color: AppColors.drawerButtonColor,
                                                         fontSize: 10,
@@ -318,9 +319,9 @@ class _CreateTeamScreenState extends State<CreateTeamScreen> {
                                           message: 'Please fill all fields', context: context);
                                       return;
                                     }
-                                    if (value.pickedExcelFile == null) {
+                                    if (value.pickedImage == null) {
                                       SnackbarManager.showErrorSnackbar(
-                                          message: 'Please upload team members', context: context);
+                                          message: 'Please upload team logo', context: context);
                                       return;
                                     }
                                     if (value.pickedExcelFile == null) {
@@ -328,7 +329,7 @@ class _CreateTeamScreenState extends State<CreateTeamScreen> {
                                           message: 'Please upload team members', context: context);
                                       return;
                                     }
-                                    value.createTeam();
+                                    value.createTeam(context);
                                   },
                                   showBorder: false,
                                   backgroundColor: AppColors.buttonColor)

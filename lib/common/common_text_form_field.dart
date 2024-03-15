@@ -7,7 +7,7 @@ class CommonTextFormField extends StatelessWidget {
   final TextEditingController controller;
   final TextInputType? keyboardType;
   final List<TextInputFormatter>? inputFormatters;
-  final String hintText;
+  final String? hintText;
   final int? maxLength;
   final Color? styleColor;
   final Color? hintColor;
@@ -17,11 +17,12 @@ class CommonTextFormField extends StatelessWidget {
   final String? Function(String?)? validator;
   final TextInputAction? textInputAction;
   final TextStyle? style;
+  final String? labelText;
 
   const CommonTextFormField(
       {super.key,
       required this.controller,
-      required this.hintText,
+        this.hintText,
       this.maxLength,
       this.keyboardType,
       this.inputFormatters,
@@ -32,7 +33,7 @@ class CommonTextFormField extends StatelessWidget {
       this.readOnly,
       this.validator,
       this.textInputAction,
-      this.style});
+      this.style, this.labelText});
 
   @override
   Widget build(BuildContext context) {
@@ -51,6 +52,7 @@ class CommonTextFormField extends StatelessWidget {
                 .bodyMedium
                 ?.copyWith(color: styleColor ?? AppColors.pureWhite, fontWeight: FontWeight.w400),
         decoration: InputDecoration(
+          labelText: labelText,
             suffixIcon:
                 showSuffix ? const Icon(Icons.keyboard_arrow_down, color: AppColors.noTeamColor) : null,
             contentPadding: const EdgeInsets.symmetric(vertical: 15),

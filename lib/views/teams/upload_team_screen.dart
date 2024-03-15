@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -106,12 +108,12 @@ class _UploadTeamScreenState extends State<UploadTeamScreen> {
                                             fontSize: 10))),
                                 const SizedBox(width: 8),
                                 Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                                  Text('Payoda Teams.xlsx',
+                                  Text(value.pickedExcelFile!.name,
                                       style: textTheme().bodyMedium?.copyWith(
                                           color: AppColors.noTeamColor,
                                           fontSize: 12,
                                           fontWeight: FontWeight.w400)),
-                                  Text(' Kb',
+                                  Text( '${value.getSizeInKb(File(value.pickedExcelFile!.path!))} Kb',
                                       style: textTheme().bodyMedium?.copyWith(
                                           color: AppColors.drawerButtonColor,
                                           fontSize: 10,
