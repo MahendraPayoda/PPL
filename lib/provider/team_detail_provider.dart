@@ -13,6 +13,8 @@ class TeamDetailProvider extends ChangeNotifier {
     try {
       final response = await _apiService.getData('${ApiUrls.individualTeamDetail}$teamId');
       if (response.statusCode == 200) {
+        debugPrint('individualTeamDetailResponse ${response.data}');
+
         individualTeamDetailResponse = IndividualTeamDetailResponse.fromJson(response.data);
       } else {}
     } catch (error) {

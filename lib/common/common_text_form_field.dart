@@ -18,6 +18,7 @@ class CommonTextFormField extends StatelessWidget {
   final TextInputAction? textInputAction;
   final TextStyle? style;
   final String? labelText;
+  final Widget? suffix;
 
   const CommonTextFormField(
       {super.key,
@@ -33,7 +34,7 @@ class CommonTextFormField extends StatelessWidget {
       this.readOnly,
       this.validator,
       this.textInputAction,
-      this.style, this.labelText});
+      this.style, this.labelText, this.suffix});
 
   @override
   Widget build(BuildContext context) {
@@ -54,7 +55,7 @@ class CommonTextFormField extends StatelessWidget {
         decoration: InputDecoration(
           labelText: labelText,
             suffixIcon:
-                showSuffix ? const Icon(Icons.keyboard_arrow_down, color: AppColors.noTeamColor) : null,
+                showSuffix ? suffix?? const Icon(Icons.keyboard_arrow_down, color: AppColors.noTeamColor) : null,
             contentPadding: const EdgeInsets.symmetric(vertical: 15),
             hintText: hintText,
             counterText: '',

@@ -13,4 +13,8 @@ class ApiUrls {
   static const String individualTeamDetail = '${baseUrl}Teams/getIndividualTeamDetails/';
   static const String allAssignedUnAssignedEmployee = '${baseUrl}Teams/getEmployeeTeams';
   static const String createTeam = '${baseUrl}Teams/CreateTeam';
+  static const String getEngagementQuaterData = '${baseUrl}Engagement/ScheduleEngagementsInQuarters';
+  static const String engagementUpload = '${baseUrl}Engagement/UploadEngagement';
+  static const String createEngagement = '${baseUrl}Engagement/CreateEngagement';
+  static const String engagementType = '${baseUrl}Engagement/EngagementTypes';
 }

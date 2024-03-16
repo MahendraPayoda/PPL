@@ -55,6 +55,7 @@ Map<String, String> en() {
     'participants': 'Participants',
     'uploadTeam': 'Upload Team(s)',
     'dragOrDropCsvHere': 'Drag or Drop CSV here',
+    'upload_engagement_details': 'Upload engagement details',
     'browseFile': 'Browse file',
     'downloadSampleCsvHere': 'Download sample CSV here',
     'selectAll': 'Select All',
@@ -67,5 +68,9 @@ Map<String, String> en() {
         'Enter the verification code we just sent to your email address.',
     'pleaseEnterYourEmailAddressToReceiveAVerificationCode':
         'Please enter your email address to receive a\nverification code.',
+    'engagement_type': 'Engagement type*',
+    'event_name': 'Event name*',
+    'ppl_points': 'PPL points*',
+    'create_event': 'Create Event'
   };
 }

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:payoda/common/app_colors.dart';
 import 'package:payoda/common/common_app_bar.dart';
 import 'package:payoda/common/common_drawer.dart';
+import 'package:payoda/common/custom_container.dart';
 import 'package:payoda/common/themes.dart';
 import 'package:payoda/gen/assets.gen.dart';
 import 'package:payoda/localization/translations.dart';
@@ -348,59 +349,5 @@ class _TeamsScreenState extends State<TeamsScreen> {
         ],
       ),
     );
-  }
-
-  Widget customContainer(
-      {required String firstTitle,
-      required String firstValue,
-      required String secondTitle,
-      required String secondValue}) {
-    return Row(children: [
-      Expanded(
-        child: Container(
-          padding: const EdgeInsets.only(top: 10, bottom: 15, left: 10),
-          decoration: BoxDecoration(borderRadius: BorderRadius.circular(5), color: AppColors.lightPrimary),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                firstTitle,
-                style: textTheme()
-                    .titleMedium
-                    ?.copyWith(fontSize: 13, fontWeight: FontWeight.w500, color: AppColors.pureWhite),
-              ),
-              const SizedBox(height: 15),
-              Text(
-                firstValue,
-                style: textTheme()
-                    .titleMedium
-                    ?.copyWith(fontSize: 30, fontWeight: FontWeight.w600, color: AppColors.pureWhite),
-              ),
-            ],
-          ),
-        ),
-      ),
-      const SizedBox(width: 10),
-      Expanded(
-        child: Container(
-          padding: const EdgeInsets.only(top: 10, bottom: 15, left: 10),
-          decoration: BoxDecoration(borderRadius: BorderRadius.circular(5), color: AppColors.lightPrimary),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(secondTitle,
-                  style: textTheme()
-                      .titleMedium
-                      ?.copyWith(fontSize: 13, fontWeight: FontWeight.w500, color: AppColors.pureWhite)),
-              const SizedBox(height: 15),
-              Text(secondValue,
-                  style: textTheme()
-                      .titleMedium
-                      ?.copyWith(fontSize: 30, fontWeight: FontWeight.w600, color: AppColors.pureWhite)),
-            ],
-          ),
-        ),
-      )
-    ]);
   }
 }
